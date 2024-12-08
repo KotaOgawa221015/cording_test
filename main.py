@@ -1,13 +1,5 @@
 from collections import defaultdict
 
-# test_data = [
-#     "1, 2, 8.54",
-#     "2, 3, 3.11",
-#     "3, 1, 2.19",
-#     "3, 4, 4",
-#     "4, 1, 1.4"
-# ]
-
 #グラフの構築(標準入力)
 def build_graph():
     graph = defaultdict(list)
@@ -23,19 +15,6 @@ def build_graph():
         except EOFError:
             break
     return graph
-
-# # グラフの構築（テスト）
-# def build_graph():
-#     graph = defaultdict(list)
-#     for line in test_data:  # ここで直接リストを使って入力データを指定
-#         line = line.strip()
-#         if not line:
-#             continue
-#         start, end, distance = line.split(',')
-#         start, end, distance = int(start.strip()), int(end.strip()), float(distance.strip())
-#         graph[start].append((end, distance))
-#     return graph
-
 
 # 深さ優先探索(DFS)による最長経路の探索
 def dfs(graph, node, visited, path, path_length, best_path, best_length):
