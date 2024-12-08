@@ -1,41 +1,40 @@
-import sys
 from collections import defaultdict
 
-test_data = [
-    "1, 2, 8.54",
-    "2, 3, 3.11",
-    "3, 1, 2.19",
-    "3, 4, 4",
-    "4, 1, 1.4"
-]
+# test_data = [
+#     "1, 2, 8.54",
+#     "2, 3, 3.11",
+#     "3, 1, 2.19",
+#     "3, 4, 4",
+#     "4, 1, 1.4"
+# ]
 
-# グラフの構築(標準入力)
-# def build_graph():
-#     graph = defaultdict(list)
-#     while True:
-#         try:
-#             # 入力を行う
-#             line = input().strip()
-#             if not line:
-#                 break
-#             start, end, distance = line.split(',')
-#             start, end, distance = int(start.strip()), int(end.strip()), float(distance.strip())
-#             graph[start].append((end, distance))
-#         except EOFError:
-#             break
-#     return graph
-
-# グラフの構築（テスト）
+#グラフの構築(標準入力)
 def build_graph():
     graph = defaultdict(list)
-    for line in test_data:  # ここで直接リストを使って入力データを指定
-        line = line.strip()
-        if not line:
-            continue
-        start, end, distance = line.split(',')
-        start, end, distance = int(start.strip()), int(end.strip()), float(distance.strip())
-        graph[start].append((end, distance))
+    while True:
+        try:
+            # 入力を行う
+            line = input().strip()
+            if not line:
+                break
+            start, end, distance = line.split(',')
+            start, end, distance = int(start.strip()), int(end.strip()), float(distance.strip())
+            graph[start].append((end, distance))
+        except EOFError:
+            break
     return graph
+
+# # グラフの構築（テスト）
+# def build_graph():
+#     graph = defaultdict(list)
+#     for line in test_data:  # ここで直接リストを使って入力データを指定
+#         line = line.strip()
+#         if not line:
+#             continue
+#         start, end, distance = line.split(',')
+#         start, end, distance = int(start.strip()), int(end.strip()), float(distance.strip())
+#         graph[start].append((end, distance))
+#     return graph
 
 
 # 深さ優先探索(DFS)による最長経路の探索
