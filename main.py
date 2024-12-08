@@ -28,9 +28,10 @@ def dfs(graph, node, visited, path, path_length, best_path, best_length):
     
     # 次のノードを探索
     for neighbor, distance in graph[node]:
-        if neighbor not in visited or not visited[neighbor]:
+        if neighbor not in visited:  # visitedに存在しないノードなら探索
+            visited[neighbor] = False  # 初期化
+        if not visited[neighbor]:  # 訪問していないノードのみ探索
             dfs(graph, neighbor, visited, path, path_length + distance, best_path, best_length)
-    
     visited[node] = False
     path.pop()
 
@@ -43,11 +44,9 @@ def find_longest_path():
     # グラフ内のすべての駅（ノード）を探索
     nodes = list(graph.keys())
 
-    visited = {node: False for node in graph}
-
     for node in nodes:
-        if not visited[node]:
-            dfs(graph, node, visited, [], 0, best_path, best_length)
+        visited = {n: False for n in graph}  # 訪問済みノードを管理
+        dfs(graph, node, visited, [], 0, best_path, best_length)
     
     # 最長経路を出力
     for station in best_path:
